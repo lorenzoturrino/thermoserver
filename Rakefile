@@ -1,4 +1,4 @@
-require 'datamapper_setup'
+require './datamapper_setup'
 
 desc "production database migration"
 task :migPro do

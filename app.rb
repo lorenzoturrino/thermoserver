@@ -8,7 +8,7 @@ class ThermoServer < Sinatra::Base
     thermo_id = params[:thermo_id]
     thermo = Thermostat.first(thermo_id: thermo_id)
     return error_message unless thermo
-    ther.temperature.to_s
+    thermo.temperature.to_s
   end
 
   post '/temperature' do
@@ -16,6 +16,7 @@ class ThermoServer < Sinatra::Base
     thermo = Thermostat.first_or_create(thermo_id: params[:thermo_id])
     return error_message unless thermo
     thermo.temperature = params[:temperature]
+    thermo.save
     "all good"
   end
 
